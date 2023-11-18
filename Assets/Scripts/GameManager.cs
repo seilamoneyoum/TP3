@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Cancel")) Application.Quit();
+        if (Input.GetButtonDown("Submit")) LoadScene(1, INDEX_FOR_MAIN);
         if (gameStart == true)
         {
             float minutes = Mathf.Floor(remainingTime / SECONDS_IN_ONE_MIN);
