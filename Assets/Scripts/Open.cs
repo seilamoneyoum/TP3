@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Open : MonoBehaviour
 {
-    private GameObject objectToOpen;
+    GameObject moveableObject;
+    private void Start()
+    {
+        MoveableObject moveableGameObject = GetComponent<MoveableObject>();
+        moveableObject = moveableGameObject.GetMoveableObject();
+    }
     private void Awake()
     {
         if (transform.Find("DoorSingle") != null)
         {
             Transform childTransform = transform.Find("DoorSingle");
-            objectToOpen = childTransform.gameObject;
+            moveableObject = childTransform.gameObject;
         }
     }
 
@@ -18,8 +23,8 @@ public class Open : MonoBehaviour
     {
         if (other.GetComponent<CharacterController>() != null)
         {
-            Vector3 newRotation = new Vector3(objectToOpen.transform.rotation.eulerAngles.x, 90f, objectToOpen.transform.rotation.eulerAngles.z);
-            objectToOpen.transform.rotation = Quaternion.Euler(newRotation);
+            Vector3 newRotation = new Vector3(moveableObject.transform.rotation.eulerAngles.x, 90f, moveableObject.transform.rotation.eulerAngles.z);
+            moveableObject.transform.rotation = Quaternion.Euler(newRotation);
         }
     }
 }

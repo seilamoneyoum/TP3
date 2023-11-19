@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: -359831205512810016}
   - component: {fileID: 1204174062248298521}
   - component: {fileID: 6209247144848674357}
+  - component: {fileID: 5564326708308767340}
   m_Layer: 8
   m_Name: PFB_DoorSingle
   m_TagString: Untagged
@@ -223,7 +224,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 06967c637b393494e85dafb0c414da41, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -331,5 +332,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6431a232b9c866458ef65e5ea7d8a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5564326708308767340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011938713744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4b605cd8fa9494eab28e6dfbed33a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
