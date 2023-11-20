@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpSpeed = 5f;
+    [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private Transform mainCamera;
+    [SerializeField] private GameManager gameManager;
     private CharacterController characterController;
     private Vector3 direction;
     private float rotationTime = 0.1f;
     private float rotationSpeed;
-    private float gravity = 20f;
-    private float verticalMovement = 0f;
 
     float horizontal, vertical, targetAngle, angle, tempSpeed, originalMovementMagnitude;
 
@@ -23,9 +21,11 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        BuildSurfaceMovement();
-        BuildVerticalMovement();
-        characterController.Move(direction);
+        if (gameManager.IsInPause() == false)
+        {
+            BuildSurfaceMovement();
+            characterController.Move(direction);
+        }
     }
 
     private void BuildSurfaceMovement()
@@ -57,16 +57,5 @@ public class PlayerMove : MonoBehaviour
         {
             direction = Vector3.zero;
         }
-    }
-    private void BuildVerticalMovement()
-    {
-        if (!characterController.isGrounded) verticalMovement -= gravity * Time.deltaTime;
-
-        if (Input.GetButtonDown("Jump") && characterController.isGrounded)
-        {
-            verticalMovement = jumpSpeed;
-        }
-
-        direction.y = verticalMovement * Time.deltaTime;
     }
 }

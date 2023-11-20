@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     private const int NB_TOTAL_KEYS = 5;
     private const int NB_TOTAL_CLUES = 10;
     private const int SECONDS_IN_ONE_MIN = 60;
-    private const int POINTS_PER_REMAINING_SECONDS = 100;
     private const int INDEX_FOR_TITLE = 0;
     private const int INDEX_FOR_MAIN = 1;
     private const int INDEX_FOR_END = 2;
@@ -19,10 +18,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private int actualScene = 0;
     bool scenesAreInTransition = false;
-    private bool gameStart = false;
+    private bool inPause;
     private float remainingTime = 480;
-    List<GameObject> clues = new List<GameObject>();
-    List<GameObject> keys = new List<GameObject>();
+    private int currentNbKeys = 0;
+    private int currentNbClues = 0;
+    private 
+    Text pauseText;
     Text nbCluesText;
     Text nbKeysText;
     Text timeText;
@@ -40,34 +41,58 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         actualScene = SceneManager.GetActiveScene().buildIndex;
+
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Cancel")) Application.Quit();
-        if (gameStart == true)
+        if (Input.GetButtonDown("Submit"))
         {
-            UpdateTime();
+            if (actualScene == INDEX_FOR_TITLE) LoadScene(0, INDEX_FOR_MAIN);
+            if (actualScene == INDEX_FOR_END) LoadScene(0, INDEX_FOR_TITLE);
         }
-        else
+        if (actualScene == INDEX_FOR_MAIN)
         {
-            if (Input.GetButtonDown("Submit")) LoadScene(0, INDEX_FOR_MAIN);
+            if (inPause == false)
+            {
+                UpdateTime();
+            }
 
+            if (Input.GetButtonDown("Pause"))
+            {
+                if (inPause)
+                {
+                    inPause = false;
+                    pauseText.text = "Appuyez sur le bouton \"P\" pour continuer la partie";
+                }
+                else
+                {
+                    inPause = true;
+                    pauseText.text = "";
+                }
+            }
         }
+
     }
 
-    public void AddKey(GameObject gameObject)
+    public bool IsInPause()
     {
-        keys.Add(gameObject);
+        return inPause;
+    }
+
+    public void AddKey()
+    {
         nbKeysText = GameObject.Find("NbKeysText").GetComponent<Text>();
-        nbKeysText.text = keys.Count.ToString() + "/" + NB_TOTAL_KEYS;
+        currentNbKeys++;
+        nbKeysText.text = currentNbKeys.ToString() + "/" + NB_TOTAL_KEYS;
     }
 
-    public void AddHint(GameObject gameObject)
+    public void AddHint()
     {
-        clues.Add(gameObject);
         nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
-        nbCluesText.text = keys.Count.ToString() + "/" + NB_TOTAL_CLUES;
+        currentNbClues++;
+        nbCluesText.text = currentNbClues.ToString() + "/" + NB_TOTAL_CLUES;
     }
 
     private void UpdateTime()
@@ -87,7 +112,7 @@ public class GameManager : MonoBehaviour
         remainingTime -= Time.deltaTime;
         if (remainingTime <= 0)
         {
-            gameStart = false;
+            inPause = true;
             LoadScene(20, INDEX_FOR_END);
         }
     }
@@ -113,7 +138,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Title");
                 break;
             case 1:
-                gameStart = true;
+                inPause = false;
                 actualScene = INDEX_FOR_MAIN;
                 SceneManager.LoadScene("Main");
                 break;
