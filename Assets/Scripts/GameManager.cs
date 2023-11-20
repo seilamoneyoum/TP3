@@ -73,9 +73,17 @@ public class GameManager : MonoBehaviour
     private void UpdateTime()
     {
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
-        float minutes = Mathf.Floor(remainingTime / SECONDS_IN_ONE_MIN);
-        float seconds = remainingTime % SECONDS_IN_ONE_MIN;
-        timeText.text = (int)minutes + " : " + (int)seconds;
+        int minutes = (int)(Mathf.Floor(remainingTime / SECONDS_IN_ONE_MIN));
+        int seconds = (int)(remainingTime % SECONDS_IN_ONE_MIN);
+        if (seconds < 10)
+        {
+            timeText.text = minutes + " : 0" + seconds;
+        }
+        else
+        {
+            timeText.text = minutes + " : " + seconds;
+
+        }
         remainingTime -= Time.deltaTime;
         if (remainingTime <= 0)
         {
