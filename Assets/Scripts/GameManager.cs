@@ -41,11 +41,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         actualScene = SceneManager.GetActiveScene().buildIndex;
+       
 
     }
 
     void Update()
     {
+
+
+
         if (Input.GetButtonDown("Cancel")) Application.Quit();
         if (Input.GetButtonDown("Submit"))
         {
@@ -54,6 +58,10 @@ public class GameManager : MonoBehaviour
         }
         if (actualScene == INDEX_FOR_MAIN)
         {
+            nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
+            nbKeysText = GameObject.Find("NbKeysText").GetComponent<Text>();
+            pauseText = GameObject.Find("PauseText").GetComponent<Text>();
+            timeText = GameObject.Find("TimeText").GetComponent<Text>();
             if (inPause == false)
             {
                 UpdateTime();
@@ -61,9 +69,10 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetButtonDown("Pause"))
             {
+
                 if (inPause)
                 {
-                    inPause = false;
+                    inPause = true;
                     pauseText.text = "Appuyez sur le bouton \"P\" pour continuer la partie";
                 }
                 else
@@ -83,21 +92,18 @@ public class GameManager : MonoBehaviour
 
     public void AddKey()
     {
-        nbKeysText = GameObject.Find("NbKeysText").GetComponent<Text>();
         currentNbKeys++;
         nbKeysText.text = currentNbKeys.ToString() + "/" + NB_TOTAL_KEYS;
     }
 
     public void AddHint()
     {
-        nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
         currentNbClues++;
         nbCluesText.text = currentNbClues.ToString() + "/" + NB_TOTAL_CLUES;
     }
 
     private void UpdateTime()
     {
-        timeText = GameObject.Find("TimeText").GetComponent<Text>();
         int minutes = (int)(Mathf.Floor(remainingTime / SECONDS_IN_ONE_MIN));
         int seconds = (int)(remainingTime % SECONDS_IN_ONE_MIN);
         if (seconds < 10)
@@ -125,8 +131,10 @@ public class GameManager : MonoBehaviour
         scenesAreInTransition = true;
 
         StartCoroutine(RestartLevelDelay(delay, scene));
+
     }
 
+    
 
     private IEnumerator RestartLevelDelay(float delay, int scene)
     {
@@ -138,9 +146,9 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Title");
                 break;
             case 1:
-                inPause = false;
                 actualScene = INDEX_FOR_MAIN;
                 SceneManager.LoadScene("Main");
+                inPause = false;
                 break;
             case 2:
                 actualScene = INDEX_FOR_END;

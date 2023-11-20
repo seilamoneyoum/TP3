@@ -6,11 +6,11 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private Transform mainCamera;
-    [SerializeField] private GameManager gameManager;
     private CharacterController characterController;
     private Vector3 direction;
     private float rotationTime = 0.1f;
     private float rotationSpeed;
+    private bool canMove = true;
 
     float horizontal, vertical, targetAngle, angle, tempSpeed, originalMovementMagnitude;
 
@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.IsInPause() == false)
+        if (canMove == true)
         {
             BuildSurfaceMovement();
             characterController.Move(direction);
