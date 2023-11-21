@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     bool scenesAreInTransition = false;
     private int currentNbKeys = 0;
     private int currentNbClues = 0;
-    private bool inGame = false;
     Text nbCluesText;
     Text nbKeysText;
     void Awake()
@@ -49,10 +48,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetGameStatus(bool canResume)
-    {
-        this.inGame = canResume;
-    }
 
     public void AddKey()
     {
@@ -94,7 +89,6 @@ public class GameManager : MonoBehaviour
             case 1:
                 actualScene = INDEX_FOR_MAIN;
                 SceneManager.LoadScene("Main");
-                inGame = true;
                 break;
             case 2:
                 actualScene = INDEX_FOR_END;
