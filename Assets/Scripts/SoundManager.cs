@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource mainCameraAudioSource;
+    private AudioSource currentSceneAudioSource;
     private static SoundManager instance = null;
     public static SoundManager Instance { get { return instance; } }
     private GameObject[] soundPlacements;
@@ -44,9 +44,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip CloseDrawerClip { get { return closeDrawer; } }
 
 
-    void Start()
+    void Awake()
     {
-        if (instance == null) instance = this;
+
+        if (instance == null)
+            instance = this;
+
         else if (instance != this)
             Destroy(gameObject);
 
@@ -57,14 +60,28 @@ public class SoundManager : MonoBehaviour
         }*/
     }
 
+    private void SetSceneAudioSource()
+    {
+        GameObject mainCamera = GameObject.Find("Main Camera");
+        currentSceneAudioSource = mainCamera.GetComponent<AudioSource>();   
+    }
+
+    private void Update()
+    {
+        if (currentSceneAudioSource == null)
+        {
+            SetSceneAudioSource();
+        }
+    }
+
     public void PauseGameMusic()
     {
-        mainCameraAudioSource.Pause();
+        currentSceneAudioSource.Pause();
     }
 
     public void UnPauseGameMusic()
     {
-        mainCameraAudioSource.UnPause();
+        currentSceneAudioSource.UnPause();
     }
     /*
     public void PlaySound(Vector3 position, AudioClip audioClip)
