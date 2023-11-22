@@ -10,12 +10,12 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private UnityEvent unPauseEvent;
     private bool inPause;
     Text pauseText;
-    private GameObject pauseBackground;
+    private GameObject pauseImage;
     private GameObject firstPersonCamera;
     private void Start()
     {
-        pauseBackground = GameObject.Find("PauseImage");
-        pauseBackground.SetActive(false);
+        pauseImage = GameObject.Find("PauseImage");
+        pauseImage.SetActive(false);
         firstPersonCamera = GameObject.Find("First Person Camera");
     }
 
@@ -27,7 +27,7 @@ public class PauseManager : MonoBehaviour
             if (inPause)
             {
                 firstPersonCamera.SetActive(true);
-                pauseBackground.SetActive(false);
+                pauseImage.SetActive(false);
                 unPauseEvent.Invoke();
                 inPause = false;
                 pauseText.text = "";
@@ -36,7 +36,7 @@ public class PauseManager : MonoBehaviour
             else
             {
                 firstPersonCamera.SetActive(false);
-                pauseBackground.SetActive(true);
+                pauseImage.SetActive(true);
                 pauseEvent.Invoke();
                 inPause = true;
                 pauseText.text = "Appuyez sur le bouton \"P\" pour continuer la partie";
