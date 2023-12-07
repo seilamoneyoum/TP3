@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private int actualScene = 0;
     bool scenesAreInTransition = false;
+    private GameObject[] keys;
+    private GameObject[] clues;
     private int currentNbKeys = 0;
     private int currentNbClues = 0;
     Text nbCluesText;

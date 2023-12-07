@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d96e5f620663c7c46a132fc25f8ebb33
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 154761
+  packageName: Dirty Chainsaw
+  packageVersion: 1.0
+  assetPath: Assets/Chainsaw/Materials/Chainsaw.mat
+  uploadId: 334322

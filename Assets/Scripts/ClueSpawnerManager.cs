@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ClueSpawnerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameObject[] clues;
+    Transform[] initialPositions;
+    Transform[] positionsAlreadySelected;
     void Start()
     {
-        
+        clues = GameObject.FindGameObjectsWithTag("Clue");
+
+        for (int i = 0; i < clues.Length; i++)
+        {
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
