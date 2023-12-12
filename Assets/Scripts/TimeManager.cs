@@ -13,7 +13,7 @@ public class TimeManager : MonoBehaviour
     private const int SECONDS_IN_ONE_MIN = 60;
     private bool timeResume = true;
     Text timeText;
-    private float remainingTime = 480;
+    private float remainingTime = 300;
 
     void Update()
     {
@@ -22,15 +22,13 @@ public class TimeManager : MonoBehaviour
             timeText = GameObject.Find("TimeText").GetComponent<Text>();
             int minutes = (int)(Mathf.Floor(remainingTime / SECONDS_IN_ONE_MIN));
             int seconds = (int)(remainingTime % SECONDS_IN_ONE_MIN);
-            if (seconds < 10)
+            string secondsFormat = " : ";
+            if (seconds < 0)
             {
-                timeText.text = minutes + " : 0" + seconds;
+                secondsFormat = " : 0";
             }
-            else
-            {
-                timeText.text = minutes + " : " + seconds;
+            timeText.text = minutes + secondsFormat + seconds;
 
-            }
             remainingTime -= Time.deltaTime;
             if (remainingTime <= 0)
             {
@@ -40,6 +38,11 @@ public class TimeManager : MonoBehaviour
                 gameManager.LoadScene(1, GameManager.INDEX_FOR_END);
             }
         }
+    }
+
+    public bool timeIsResumed()
+    {
+        return timeResume;
     }
 
     public void SetTimeResume(bool canResume)
