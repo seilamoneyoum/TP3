@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4000013398795782}
   - component: {fileID: 33000010880762378}
   - component: {fileID: 23000010805083178}
-  - component: {fileID: 65000010772889064}
   m_Layer: 8
   m_Name: rightDoor
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65000010772889064
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010079390914}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.83846074, y: 2.5, z: 0.12142029}
-  m_Center: {x: -0.4190913, y: 0, z: 0}
 --- !u!1 &1000010140323576
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +148,6 @@ GameObject:
   - component: {fileID: 4000011611525314}
   - component: {fileID: 33000013169868940}
   - component: {fileID: 23000011490620920}
-  - component: {fileID: 65000011612511682}
   m_Layer: 8
   m_Name: leftDoor
   m_TagString: Untagged
@@ -243,27 +220,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65000011612511682
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012791460798}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.83846086, y: 2.5, z: 0.12142029}
-  m_Center: {x: 0.41940954, y: 0, z: 0}
 --- !u!1 &1000013707774836
 GameObject:
   m_ObjectHideFlags: 0

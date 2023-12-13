@@ -1,17 +1,16 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.XR;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using System;
 
 public class GameManager : MonoBehaviour
 {
-    private const int NB_TOTAL_KEYS = 5;
-    private const int NB_TOTAL_CLUES = 8;
+
     public const int INDEX_FOR_TITLE = 0;
     public const int INDEX_FOR_MAIN = 1;
     public const int INDEX_FOR_END = 2;
@@ -20,11 +19,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private int actualScene = 0;
     bool scenesAreInTransition = false;
-    private List<GameObject> keys = new List<GameObject>();
-    private List<GameObject> clues = new List<GameObject>();
+
     private bool hasWon = false;
-    Text nbCluesText;
-    Text nbKeysText;
+
     Text gameStatusText;
     void Awake()
     {
@@ -54,28 +51,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void AddKey(GameObject gameObject)
-    {
-        keys.Add(gameObject);
-        nbKeysText = GameObject.Find("NbKeysText").GetComponent<Text>();
-        nbKeysText.text = keys.Count.ToString() + "/" + NB_TOTAL_KEYS;
-    }
-
-    public void AddClue(GameObject gameObject)
-    {
-        clues.Add(gameObject);
-        nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
-        nbCluesText.text = clues.Count.ToString() + "/" + NB_TOTAL_CLUES;
-    }
-
-    public bool IsKeyAvailable(string name)
-    {
-        foreach (GameObject key in keys)
-        {
-            if (key.name.Equals(name)) return true;
-        }
-        return false;
-    }
 
 
     public void LoadScene(float delay, int scene)

@@ -24,6 +24,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip closeDoor;
     [SerializeField] private AudioClip openDrawer;
     [SerializeField] private AudioClip closeDrawer;
+    [SerializeField] private AudioClip chainsaw;
+    [SerializeField] private AudioClip lightSwitch;
+    [SerializeField] private AudioClip removeWedge;
 
     public AudioClip PlayerWalk1Clip { get { return playerWalk1; } }
     public AudioClip PlayerWalk2Clip { get { return playerWalk2; } }
@@ -43,7 +46,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip OpenDrawerClip { get { return openDrawer; } }
     public AudioClip CloseDrawerClip { get { return closeDrawer; } }
 
-
+    public AudioClip ChainsawClip { get { return chainsaw; } }
+    public AudioClip LightSwitchClip { get { return lightSwitch; } }
+    public AudioClip RemoveWedgeClip { get { return removeWedge; } }
     void Awake()
     {
 

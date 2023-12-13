@@ -4,33 +4,29 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private GameObject door;
-    private bool isLocked = false;
-    private float rotationX = 0;
+    private float rotationXOpen = 0;
+    private float rotationXClose = 0;
+
     private void Awake()
     {
-        if (transform.Find("DoorSingle") != null)
+        if (gameObject.CompareTag("LeftDoor")) // Gestion de la porte gauche
         {
-            Transform childTransform = transform.Find("DoorSingle");
-            door = childTransform.gameObject;
-            if (gameObject.GetComponent<Unlock>())
-            {
-                isLocked = true;
-            }
+            rotationXOpen = 90;
+        }
+        else if (gameObject.CompareTag("RightDoor")) // Gestion de la porte droite
+        {
+            rotationXOpen = -90;
         }
     }
 
-    public bool IsLocked()
-    {
-        return isLocked;
-    }
-    public GameObject GetDoor()
-    {
-        return door;
+    public float GetRotationXOpen()
+    { 
+        return rotationXOpen; 
     }
 
-    public void Unlock()
-    {
-        this.isLocked = true;
+    public float GetRotationXClose() 
+    {  
+        return rotationXClose; 
     }
+
 }

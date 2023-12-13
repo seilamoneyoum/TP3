@@ -7,6 +7,11 @@ TagManager:
   - Key
   - Clue
   - Carpet
+  - Door
+  - Drawer
+  - LeftDoor
+  - RightDoor
+  - Lightswitch
   layers:
   - Default
   - TransparentFX

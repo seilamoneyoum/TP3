@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class LightsOn : MonoBehaviour
+public class Light : MonoBehaviour
 {
     new GameObject light;
     private void Start()
@@ -16,11 +16,15 @@ public class LightsOn : MonoBehaviour
             light.SetActive(false);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    public void ChangeLightState()
     {
-        if (other.gameObject.GetComponent<CharacterController>() != null)
+        if (light.activeSelf == false)
         {
             light.SetActive(true);
+        }
+        else
+        {
+            light.SetActive(false);
         }
     }
 }
