@@ -57,11 +57,10 @@ public class Clicker : MonoBehaviour
     {
         if (chosenObject.CompareTag("Key"))
         {
-            CollectibleInformation collectibleInformation = chosenObject.GetComponent<CollectibleInformation>();
+            Information information = chosenObject.GetComponent<Information>();
             CollectEffect collectEffect = chosenObject.GetComponent<CollectEffect>();
             collectEffect.AfterCollect();
-            collectibleInformation.ShowInformation();
-            
+            information.ShowInformation();
             keysManager.AddKey(chosenObject);
         }
     }
@@ -70,6 +69,10 @@ public class Clicker : MonoBehaviour
     {
         if (chosenObject.CompareTag("Clue"))
         {
+            Information information = chosenObject.GetComponent<Information>();
+            CollectEffect collectEffect = chosenObject.GetComponent<CollectEffect>();
+            collectEffect.AfterCollect();
+            information.ShowInformation();
             cluesManager.AddClue(chosenObject);
         }
     }

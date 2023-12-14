@@ -32,8 +32,9 @@ public class DoorStateLocked : DoorState
 
         audioSource.clip = soundManager.OpenDoorClip;
         audioSource.Play();
-        Vector3 newRotation = new Vector3(door.transform.rotation.eulerAngles.x, door.GetRotationXOpen(), door.transform.rotation.eulerAngles.z);
-        door.transform.rotation = Quaternion.Euler(newRotation);
+        Vector3 currentRotation = door.transform.rotation.eulerAngles;
+        currentRotation.y -= door.GetRotationYOpen();
+        door.transform.rotation = Quaternion.Euler(currentRotation);
         doorManager.ChangeDoorState(DoorManager.DoorStateToSwitch.Open);
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class CollectibleInformation : MonoBehaviour
+public class Information : MonoBehaviour
 {
     [SerializeField] protected string currentInformation = "";
     protected Text text;
