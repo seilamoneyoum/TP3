@@ -5,13 +5,16 @@ public class Clicker : MonoBehaviour
 {
     const float MAX_DISTANCE = 1;
     Camera m_Camera;
-    CollectibleManager collectibleManager;
+    KeysManager keysManager;
+    CluesManager cluesManager;
     
     void Awake()
     {
         m_Camera = Camera.main;
-        GameObject collectibleManagerObject = GameObject.Find("CollectibleManager");
-        collectibleManager = collectibleManagerObject.GetComponent<CollectibleManager>();
+        GameObject keysManagerObject = GameObject.Find("KeysManager");
+        keysManager = keysManagerObject.GetComponent<KeysManager>();
+        GameObject cluesManagerObject = GameObject.Find("CluesManager");
+        cluesManager = cluesManagerObject.GetComponent<CluesManager>();
     }
     // Référence: https://learn.unity.com/tutorial/onmousedown#63566bf3edbc2a0285856b5a
     void Update()
@@ -59,7 +62,7 @@ public class Clicker : MonoBehaviour
             collectEffect.AfterCollect();
             collectibleInformation.ShowInformation();
             
-            collectibleManager.AddKey(chosenObject);
+            keysManager.AddKey(chosenObject);
         }
     }
 
@@ -67,7 +70,7 @@ public class Clicker : MonoBehaviour
     {
         if (chosenObject.CompareTag("Clue"))
         {
-            collectibleManager.AddClue(chosenObject);
+            cluesManager.AddClue(chosenObject);
         }
     }
 

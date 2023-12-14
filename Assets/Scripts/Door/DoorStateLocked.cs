@@ -13,7 +13,7 @@ public class DoorStateLocked : DoorState
     {
         text = GameObject.Find("MessageText").GetComponent<Text>();
 
-        if (collectibleManager.IsKeyAvailable("Crowbar"))
+        if (keysManager.IsKeyAvailable("Crowbar"))
         {
             text.text = CAN_UNLOCK_MESSAGE;
             StartCoroutine(UnlockThenOpenDoor());

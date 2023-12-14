@@ -6,15 +6,15 @@ public abstract class DoorState : MonoBehaviour
 {
     protected Door door;
     protected AudioSource audioSource;
-    protected CollectibleManager collectibleManager;
+    protected KeysManager keysManager;
     protected DoorManager doorManager;
     protected SoundManager soundManager;
     protected void Awake()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
         door = GetComponent<Door>();
-        GameObject collectibleManagerObject = GameObject.Find("CollectibleManager");
-        collectibleManager = collectibleManagerObject.GetComponent<CollectibleManager>();
+        GameObject keysManagerObject = GameObject.Find("KeysManager");
+        keysManager = keysManagerObject.GetComponent<KeysManager>();
         GameObject soundManagerObject = GameObject.Find("SoundManager");
         soundManager = soundManagerObject.GetComponent <SoundManager>();  
         doorManager = GetComponent<DoorManager>();
