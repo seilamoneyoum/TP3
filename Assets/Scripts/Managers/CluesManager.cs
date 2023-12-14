@@ -18,4 +18,14 @@ public class CluesManager : MonoBehaviour
             nbCluesText.text = clues.Count.ToString() + "/" + NB_TOTAL_CLUES;
         }
     }
+
+    public bool IsClueAvailable(string name)
+    {
+        foreach (GameObject clue in clues)
+        {
+            if (clue.name.Equals(name)) return true;
+        }
+        return false;
+    }
+
 }

@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private bool isStanding = true;
     [SerializeField] private bool canMove = true;
     private const float SIZE_Y_CROUCHING = 0.3f;
-    private const float SIZE_Y_STANDING = 0.9f;
+    private const float SIZE_Y_STANDING = 1f;
     private CharacterController characterController;
     private Vector3 direction;
     private float rotationTime = 0.1f;

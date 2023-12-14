@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class CollectibleInformation : MonoBehaviour
 {
-    [SerializeField] private string information;
-    Text text;
+    [SerializeField] protected string currentInformation = "";
+    protected Text text;
+
     void Start()
     {
         GameObject messageGameObject = GameObject.Find("MessageText");
@@ -15,6 +15,12 @@ public class CollectibleInformation : MonoBehaviour
 
     public void ShowInformation()
     {
-        text.text = information;
+        text.text = currentInformation;
+    }
+
+    public void SetNewInformation(string newInformation)
+    {
+        this.currentInformation = newInformation;
+        ShowInformation();
     }
 }

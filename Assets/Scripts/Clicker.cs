@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Clicker : MonoBehaviour
 {
-    const float MAX_DISTANCE = 1;
+    const float MAX_DISTANCE = 1.3f;
     Camera m_Camera;
     KeysManager keysManager;
     CluesManager cluesManager;
