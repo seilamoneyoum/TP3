@@ -14,16 +14,22 @@ public class CollectibleManager : MonoBehaviour
 
     public void AddKey(GameObject gameObject)
     {
-        keys.Add(gameObject);
-        nbKeysText = GameObject.Find("NbKeysText").GetComponent<Text>();
-        nbKeysText.text = keys.Count.ToString() + "/" + NB_TOTAL_KEYS;
+        if (!keys.Contains(gameObject))
+        {
+            keys.Add(gameObject);
+            nbKeysText = GameObject.Find("NbKeysText").GetComponent<Text>();
+            nbKeysText.text = keys.Count.ToString() + "/" + NB_TOTAL_KEYS;
+        }
     }
 
     public void AddClue(GameObject gameObject)
     {
-        clues.Add(gameObject);
-        nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
-        nbCluesText.text = clues.Count.ToString() + "/" + NB_TOTAL_CLUES;
+        if (!clues.Contains(gameObject))
+        {
+            clues.Add(gameObject);
+            nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
+            nbCluesText.text = clues.Count.ToString() + "/" + NB_TOTAL_CLUES;
+        }
     }
 
     public bool IsKeyAvailable(string name)

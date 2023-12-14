@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private float rotationXOpen = 0;
-    private float rotationXClose = 0;
+    private float rotationXOpen;
+    private float rotationXClose;
 
     private void Awake()
     {
         if (gameObject.CompareTag("LeftDoor")) // Gestion de la porte gauche
         {
             rotationXOpen = 90;
+            rotationXClose = 0;
         }
         else if (gameObject.CompareTag("RightDoor")) // Gestion de la porte droite
         {
-            rotationXOpen = -90;
+            rotationXOpen = 180;
+            rotationXClose = -90;
         }
     }
 

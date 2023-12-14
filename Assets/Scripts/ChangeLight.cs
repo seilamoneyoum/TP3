@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Light : MonoBehaviour
+public class ChangeLight : MonoBehaviour
 {
-    new GameObject light;
+    Light light;
     private void Start()
     {
         Transform lightTransform = transform.Find("Light");
 
         if (lightTransform != null)
         {
-            light = lightTransform.gameObject;
-            light.SetActive(false);
+            GameObject lightGameObject = lightTransform.gameObject;
+            light = lightGameObject.GetComponent<Light>();
         }
     }
     public void ChangeLightState()
     {
-        if (light.activeSelf == false)
+        if (light.isActiveAndEnabled)
         {
-            light.SetActive(true);
+            light.enabled = false;
         }
         else
         {
-            light.SetActive(false);
+            light.enabled = true;
         }
     }
 }

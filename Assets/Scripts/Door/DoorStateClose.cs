@@ -8,8 +8,8 @@ public class DoorStateClose : DoorState
     {
         audioSource.clip = soundManager.OpenDoorClip;
         audioSource.Play();
-        Vector3 newRotation = new Vector3(door.transform.rotation.eulerAngles.x, door.GetRotationXOpen(), door.transform.rotation.eulerAngles.z);
-        door.transform.rotation = Quaternion.Euler(newRotation);
+        Quaternion newRotation = Quaternion.Euler(door.transform.rotation.x, door.transform.rotation.y -door.GetRotationXOpen(), door.transform.rotation.z);
+        door.transform.rotation = newRotation;
         doorManager.ChangeDoorState(DoorManager.DoorStateToSwitch.Open);
     }
 

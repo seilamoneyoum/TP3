@@ -40,7 +40,7 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    public bool timeIsResumed()
+    public bool TimeIsResumed()
     {
         return timeResume;
     }

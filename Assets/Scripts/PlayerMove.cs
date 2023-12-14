@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private Transform mainCamera;
+    [SerializeField] private float moveSpeed = 1.3f;
+    [SerializeField] private bool isStanding = true;
+    [SerializeField] private bool canMove = true;
+    private const float SIZE_Y_CROUCHING = 0.3f;
+    private const float SIZE_Y_STANDING = 0.9f;
     private CharacterController characterController;
     private Vector3 direction;
     private float rotationTime = 0.1f;
     private float rotationSpeed;
     private float gravity = 20f;
     private float verticalMovement = 0f;
-    [SerializeField] private bool canMove = true;
     float horizontal, vertical, targetAngle, angle, tempSpeed, originalMovementMagnitude;
 
     private void Start()
@@ -71,9 +73,23 @@ public class PlayerMove : MonoBehaviour
     {
         if (!characterController.isGrounded) verticalMovement -= gravity * Time.deltaTime;
 
-        if (Input.GetButtonDown("Jump") && characterController.isGrounded)
+        if (Input.GetButtonDown("Jump"))
         {
-            verticalMovement = jumpSpeed;
+            if (isStanding == true)
+            {
+                // Cette méthode diminue la grandeur du personnage, mais cela permet de donner l'illusion que le personnage est accroupi.
+                transform.localScale = new Vector3(transform.localScale.x, SIZE_Y_CROUCHING, transform.localScale.z);
+                isStanding = false;
+                moveSpeed = 0.5f;
+            }
+            else
+            {
+                // Cette méthode augmente la grandeur diminuée du personnage, mais cela permet de donner l'illusion que le personnage est debout.
+                transform.localScale = new Vector3(transform.localScale.x, SIZE_Y_STANDING, transform.localScale.z);
+                isStanding = true;
+                moveSpeed = 1.3f;
+
+            }
         }
 
         direction.y = verticalMovement * Time.deltaTime;
