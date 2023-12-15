@@ -5,19 +5,23 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private float rotationYOpen;
-    private float rotationYClose;
+    private bool isLocked;
 
     private void Awake()
     {
-        if (gameObject.CompareTag("LeftDoor")) // Gestion de la porte gauche
+        if (gameObject.CompareTag("LeftDoor")) 
         {
-            rotationYClose = -180;
             rotationYOpen = -90;
         }
-        else if (gameObject.CompareTag("RightDoor")) // Gestion de la porte droite
+        else if (gameObject.CompareTag("RightDoor")) 
         {
-            rotationYClose = 180;
             rotationYOpen = 90;
+        }
+
+        isLocked = false;
+        if (gameObject.GetComponents<Unlock>() != null)
+        {
+            isLocked = true;
         }
     }
 
@@ -26,9 +30,14 @@ public class Door : MonoBehaviour
         return rotationYOpen; 
     }
 
-    public float GetRotationYClose() 
-    {  
-        return rotationYClose; 
+
+    public bool GetLockedStatus()
+    {
+        return isLocked;
     }
 
+    public void SetLockedStatus(bool status)
+    {
+        this.isLocked = status;
+    }
 }

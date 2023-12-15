@@ -8,6 +8,7 @@ public class Unlock : MonoBehaviour
     [SerializeField] private string requiredObjectToUnlock = "";
     [SerializeField] private string potentialObjectToUnlockButFail = "";
     [SerializeField] private string unsuccessfulUnlockMessage = "";
+    [SerializeField] private string successfulUnlockMessage = "";
 
     private KeysManager keysManager;
     private CluesManager cluesManager;
@@ -29,6 +30,7 @@ public class Unlock : MonoBehaviour
         if (keysManager.IsKeyAvailable(requiredObjectToUnlock) || cluesManager.IsClueAvailable(requiredObjectToUnlock))
         {
             isLocked = false;
+            text.text = successfulUnlockMessage;
         }
         else if (keysManager.IsKeyAvailable(potentialObjectToUnlockButFail) || cluesManager.IsClueAvailable(potentialObjectToUnlockButFail))
         {
