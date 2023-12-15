@@ -9,7 +9,7 @@ public class Clicker : MonoBehaviour
     private ToolsManager toolsManager;
     private CluesManager cluesManager;
     
-    void Awake()
+    void Start()
     {
         m_Camera = Camera.main;
         GameObject finderObject = GameObject.Find("Finder");
@@ -37,12 +37,20 @@ public class Clicker : MonoBehaviour
                     ClickOnDoor(chosenObject);
                     ClickOnTool(chosenObject);
                     ClickOnLightSwitch(chosenObject);
+                    ClickOnCrates(chosenObject);
                 }
 
             }
         }
     }
 
+    private void ClickOnCrates(GameObject chosenObject)
+    {
+        if (chosenObject.name == "Crates")
+        {
+            Unlock unlock = chosenObject.GetComponent<UnlockByTool>();
+        }
+    }
     private void ClickOnDoor(GameObject chosenObject)
     {
         if (chosenObject.CompareTag("LeftDoor") || chosenObject.CompareTag("RightDoor"))

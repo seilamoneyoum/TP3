@@ -13,7 +13,7 @@ public class DoorStateClose : DoorState
                 unlock.TryToUnlock();
                 if (!unlock.IsLocked()) canMove = true;
             }
-            else if (canMove)
+            else 
             {
                 audioSource.clip = soundManager.OpenDoorClip;
                 audioSource.Play();
@@ -23,6 +23,7 @@ public class DoorStateClose : DoorState
                 doorManager.ChangeDoorState(DoorManager.DoorStateToSwitch.Open);
             }
         }
+
     }
 
 }

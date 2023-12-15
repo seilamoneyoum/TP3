@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public abstract class DoorState : MonoBehaviour
 {
-    [SerializeField] protected bool canMove;
+    protected bool canMove;
     protected UnlockByTool unlock;
     protected AudioSource audioSource;
     protected DoorManager doorManager;
@@ -14,7 +14,7 @@ public abstract class DoorState : MonoBehaviour
     protected float rotationYOpen;
     private Finder finder;
 
-    protected void Awake()
+    protected void Start()
     {
         if (gameObject.CompareTag("LeftDoor"))
         {
@@ -29,8 +29,10 @@ public abstract class DoorState : MonoBehaviour
         if (gameObject.GetComponent<UnlockByTool>() != null)
         {
             unlock = gameObject.GetComponent<UnlockByTool>();
-            canMove = false;
-
+            if (unlock.IsLocked())
+            {
+                canMove = false;
+            }
         }
 
         GameObject finderObject = GameObject.Find("Finder");
@@ -40,7 +42,6 @@ public abstract class DoorState : MonoBehaviour
         progressManager = finder.GetProgressManager();
         doorManager = GetComponent<DoorManager>();
     }
-
 
     public abstract void ManageStateChange();
 

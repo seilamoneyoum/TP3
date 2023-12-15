@@ -458,7 +458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4875696007443450, guid: 96b58236b5b44c848975ddea646f8ead, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.077022076
+      value: -0.071
       objectReference: {fileID: 0}
     - target: {fileID: 4875696007443450, guid: 96b58236b5b44c848975ddea646f8ead, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1986,8 +1986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4b605cd8fa9494eab28e6dfbed33a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationYOpen: 0
-  isLocked: 0
 --- !u!1 &557340128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,7 +2380,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3404,15 +3402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3035f149fea4edb42874a6dfdb6453de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredObjectToUnlock: SafeKey
-  potentialObjectToUnlockButFail: SuitcaseKey
-  unsuccessfulUnlockMessage: "J'ai une cl\xE9, mais elle ne sert pas \xE0 ouvrir
-    cette coffre."
-  successfulUnlockMessage: 
-  keysManager: {fileID: 0}
-  cluesManager: {fileID: 0}
-  isLocked: 0
-  text: {fileID: 0}
 --- !u!1 &876225299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1437743371161370, guid: b4d0d3252571eb9468266301b65df7d2, type: 3}
@@ -3793,8 +3782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4b605cd8fa9494eab28e6dfbed33a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationYOpen: 0
-  isLocked: 0
 --- !u!82 &907211254
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6711,6 +6698,9 @@ PrefabInstance:
     - {fileID: 1836370979572854, guid: b4d0d3252571eb9468266301b65df7d2, type: 3}
     - {fileID: 1661686806259504, guid: b4d0d3252571eb9468266301b65df7d2, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4950517545189902, guid: b4d0d3252571eb9468266301b65df7d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9197639825166184025}
     - targetCorrespondingSourceObject: {fileID: 4156281532975588, guid: b4d0d3252571eb9468266301b65df7d2, type: 3}
       insertIndex: 5
       addedObject: {fileID: 557340129}
@@ -6884,6 +6874,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 873195236}
   m_SourcePrefab: {fileID: 100100000, guid: b4d0d3252571eb9468266301b65df7d2, type: 3}
+--- !u!4 &1526360537 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4950517545189902, guid: b4d0d3252571eb9468266301b65df7d2, type: 3}
+  m_PrefabInstance: {fileID: 1526360536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1530834203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8931,8 +8926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4b605cd8fa9494eab28e6dfbed33a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationYOpen: 0
-  isLocked: 0
 --- !u!1 &1927757976
 GameObject:
   m_ObjectHideFlags: 0
@@ -9195,6 +9188,7 @@ MonoBehaviour:
   requiredObjectToUnlock: Crowbar
   successfulUnlockMessage: "Heureusement que j'ai trouv\xE9 un pied de biche pour
     retirer la cale de la porte. "
+  audioClip: {fileID: 8300000, guid: ad27f720e27ac2f4c9d3cba8d903b25b, type: 3}
 --- !u!114 &1927757988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10476,7 +10470,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1526360537}
     m_Modifications:
     - target: {fileID: 7126788238235982473, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_Name
@@ -10488,7 +10482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.675
+      value: 0.455
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10496,23 +10490,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.71
+      value: -3.27
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10529,8 +10523,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7126788238235982473, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9197639825166184027}
   m_SourcePrefab: {fileID: 100100000, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
+--- !u!4 &9197639825166184025 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7649039621307129072, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
+  m_PrefabInstance: {fileID: 9197639825166184024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9197639825166184026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7126788238235982473, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
+  m_PrefabInstance: {fileID: 9197639825166184024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9197639825166184027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197639825166184026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee1f451afdf29b4184875051c369a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredObjectToUnlock: Chainsaw
+  successfulUnlockMessage: "Je peux finalement m'\xE9chapper de l\xE0 avec la tron\xE7onneuse.
+    Juste esp\xE9rant que je sois pas bless\xE9."
+  audioClip: {fileID: 8300000, guid: 09e35ca8ebefad94aa7ef439fb3b376d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -10544,5 +10567,4 @@ SceneRoots:
   - {fileID: 224768737}
   - {fileID: 805828094}
   - {fileID: 1526360536}
-  - {fileID: 9197639825166184024}
   - {fileID: 709862414}

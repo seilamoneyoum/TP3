@@ -10,7 +10,7 @@ public class UnlockByTool : Unlock
         {
             information.SetNewInformation(successfulUnlockMessage);
             SetLockedStatus(false);
-            audioSource.clip = soundManager.RemoveWedgeClip;
+            audioSource.clip = audioClip;
             audioSource.Play();
             progressManager.AddUnlockProgress();
         }
