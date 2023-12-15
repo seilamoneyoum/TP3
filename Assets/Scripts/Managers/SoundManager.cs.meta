@@ -3,7 +3,26 @@ guid: f989af46354b46a4b9051c97605c8842
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerWalk1: {instanceID: 0}
+  - playerWalk2: {instanceID: 0}
+  - playerWalk3: {instanceID: 0}
+  - playerWalk4: {instanceID: 0}
+  - playerWalk5: {instanceID: 0}
+  - playerWalk6: {instanceID: 0}
+  - playerWalk7: {instanceID: 0}
+  - playerWalk8: {instanceID: 0}
+  - playerWalk9: {instanceID: 0}
+  - playerWalk10: {instanceID: 0}
+  - collectKey: {instanceID: 0}
+  - collectClue: {instanceID: 0}
+  - openDoor: {fileID: 8300000, guid: 7e8aebec265e0e3498568ee5cf1c5b1d, type: 3}
+  - closeDoor: {fileID: 8300000, guid: 0e83785ef8639e843963e2e12d4ebc52, type: 3}
+  - openDrawer: {instanceID: 0}
+  - closeDrawer: {instanceID: 0}
+  - chainsaw: {instanceID: 0}
+  - lightSwitch: {instanceID: 0}
+  - removeWedge: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

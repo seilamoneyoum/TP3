@@ -3,18 +3,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Clicker : MonoBehaviour
 {
-    const float MAX_DISTANCE = 1.3f;
-    Camera m_Camera;
-    KeysManager keysManager;
-    CluesManager cluesManager;
+    private const float MAX_DISTANCE = 1.3f;
+    private Camera m_Camera;
+    private Finder finder;
+    private ToolsManager toolsManager;
+    private CluesManager cluesManager;
     
     void Awake()
     {
         m_Camera = Camera.main;
-        GameObject keysManagerObject = GameObject.Find("KeysManager");
-        keysManager = keysManagerObject.GetComponent<KeysManager>();
-        GameObject cluesManagerObject = GameObject.Find("CluesManager");
-        cluesManager = cluesManagerObject.GetComponent<CluesManager>();
+        GameObject finderObject = GameObject.Find("Finder");
+        finder = finderObject.GetComponent<Finder>();
+        toolsManager = finder.GetToolsManager();
+        cluesManager = finder.GetCluesManager();
     }
     // Référence: https://learn.unity.com/tutorial/onmousedown#63566bf3edbc2a0285856b5a
     void Update()
@@ -33,12 +34,11 @@ public class Clicker : MonoBehaviour
                     GameObject chosenObject = hit.collider.gameObject;
                     ClickOnClue(chosenObject);
                     ClickOnCarpet(chosenObject);
-                    ClickOnDrawer(chosenObject);
                     ClickOnDoor(chosenObject);
-                    ClickOnKey(chosenObject);
+                    ClickOnTool(chosenObject);
                     ClickOnLightSwitch(chosenObject);
                 }
-                
+
             }
         }
     }
@@ -50,18 +50,21 @@ public class Clicker : MonoBehaviour
             DoorManager doorManager = chosenObject.GetComponent<DoorManager>();
             DoorState doorState = doorManager.GetDoorStateObject();
             doorState.ManageStateChange();
+
         }
     }
 
-    private void ClickOnKey(GameObject chosenObject)
+    private void ClickOnTool(GameObject chosenObject)
     {
-        if (chosenObject.CompareTag("Key"))
+        if (chosenObject.CompareTag("Tool"))
         {
             Information information = chosenObject.GetComponent<Information>();
             CollectEffect collectEffect = chosenObject.GetComponent<CollectEffect>();
             collectEffect.AfterCollect();
             information.ShowInformation();
-            keysManager.AddKey(chosenObject);
+            toolsManager.AddTool(chosenObject);
+
+
         }
     }
 
@@ -74,13 +77,7 @@ public class Clicker : MonoBehaviour
             collectEffect.AfterCollect();
             information.ShowInformation();
             cluesManager.AddClue(chosenObject);
-        }
-    }
 
-    private void ClickOnDrawer(GameObject chosenObject)
-    {
-        if (chosenObject.CompareTag("Drawer"))
-        {
 
         }
     }
@@ -90,15 +87,17 @@ public class Clicker : MonoBehaviour
         if (chosenObject.CompareTag("Carpet"))
         {
 
+
         }
     }
-
     private void ClickOnLightSwitch(GameObject chosenObject)
     {
         if (chosenObject.CompareTag("Lightswitch"))
         {
             ChangeLight light = chosenObject.GetComponent<ChangeLight>();
             light.ChangeLightState();
+
+
         }
 
     }

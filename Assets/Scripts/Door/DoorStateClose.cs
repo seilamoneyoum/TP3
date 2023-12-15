@@ -6,12 +6,23 @@ public class DoorStateClose : DoorState
 {
     public override void ManageStateChange()
     {
-        audioSource.clip = soundManager.OpenDoorClip;
-        audioSource.Play();
-        Vector3 currentRotation = door.transform.rotation.eulerAngles;
-        currentRotation.y -= door.GetRotationYOpen();
-        door.transform.rotation = Quaternion.Euler(currentRotation);
-        doorManager.ChangeDoorState(DoorManager.DoorStateToSwitch.Open);
+        if (!audioSource.isPlaying)
+        {
+            if (!canMove)
+            {
+                unlock.TryToUnlock();
+                if (!unlock.IsLocked()) canMove = true;
+            }
+            else if (canMove)
+            {
+                audioSource.clip = soundManager.OpenDoorClip;
+                audioSource.Play();
+                Vector3 currentRotation = transform.rotation.eulerAngles;
+                currentRotation.y -= rotationYOpen;
+                transform.rotation = Quaternion.Euler(currentRotation);
+                doorManager.ChangeDoorState(DoorManager.DoorStateToSwitch.Open);
+            }
+        }
     }
 
 }

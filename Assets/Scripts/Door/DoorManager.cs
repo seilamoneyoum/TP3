@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
-    public enum DoorStateToSwitch { Open, Close, Locked, Destroy}
+    public enum DoorStateToSwitch { Open, Close}
 
     private DoorState doorState;
     private DoorStateToSwitch currentState;
@@ -12,15 +12,8 @@ public class DoorManager : MonoBehaviour
     private void OnEnable()
     {
         doorState = GetComponent<DoorState>();
-
-        if (GetComponent<DoorStateLocked>())
-        {
-            ChangeDoorState(DoorStateToSwitch.Locked);
-        }
-        else
-        {
-            ChangeDoorState(DoorStateToSwitch.Close);
-        }
+        ChangeDoorState(DoorStateToSwitch.Close);
+        
     }
 
     public DoorStateToSwitch GetDoorState()
@@ -49,11 +42,6 @@ public class DoorManager : MonoBehaviour
             case DoorStateToSwitch.Close:
                 {
                     doorState = gameObject.GetComponent<DoorStateClose>();
-                    break;
-                }
-            case DoorStateToSwitch.Locked:
-                {
-                    doorState = gameObject.GetComponent<DoorStateLocked>();
                     break;
                 }
         }
