@@ -12,6 +12,7 @@ public class Finder : MonoBehaviour
     private ToolsManager toolsManager;
     private CluesManager cluesManager;
     private ProgressManager progressManager;
+    private Clicker clicker;
 
     void Awake()
     {
@@ -31,10 +32,18 @@ public class Finder : MonoBehaviour
         timeManager = timeManagerObject.GetComponent<TimeManager>();
 
         GameObject cluesManagerObject = GameObject.Find("CluesManager");
-
         cluesManager = cluesManagerObject.GetComponent<CluesManager>();
+
         GameObject progressManagerObject = GameObject.Find("ProgressManager");
         progressManager = progressManagerObject.GetComponent<ProgressManager>();
+
+        GameObject clickerObject = GameObject.Find("Clicker");
+        clicker = clickerObject.GetComponent<Clicker>();
+    }
+
+    public Clicker GetClicker()
+    {
+        return clicker;
     }
 
     public Text GetMessageText()

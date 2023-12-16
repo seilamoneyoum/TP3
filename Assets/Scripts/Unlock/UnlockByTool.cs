@@ -6,7 +6,7 @@ public class UnlockByTool : Unlock
 {
     public override void TryToUnlock()
     {
-        if (toolsManager.IsToolAvailable(requiredObjectToUnlock))
+        if (toolsManager.IsToolAvailable(requirementToUnlock))
         {
             information.SetNewInformation(successfulUnlockMessage);
             SetLockedStatus(false);

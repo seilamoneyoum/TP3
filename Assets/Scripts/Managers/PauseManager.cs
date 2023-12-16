@@ -9,37 +9,34 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private UnityEvent pauseEvent;
     [SerializeField] private UnityEvent unPauseEvent;
     private bool inPause;
-    Text pauseText;
-    private GameObject pauseImage;
-    private GameObject firstPersonCamera;
+    private GameObject pauseText;
+    private GameObject pauseBackground;
+
     private void Start()
     {
-        pauseImage = GameObject.Find("PauseImage");
-        pauseImage.SetActive(false);
-        firstPersonCamera = GameObject.Find("First Person Camera");
+        inPause = false;
+        pauseText = GameObject.Find("PauseText");
+        pauseBackground = GameObject.Find("PauseImage");
+        pauseBackground.SetActive(false);
+        pauseText.SetActive(false);
     }
-
     void Update()
     {
         if (Input.GetButtonDown("Pause"))
         {
-            pauseText = GameObject.Find("PauseText").GetComponent<Text>();
             if (inPause)
             {
-                firstPersonCamera.SetActive(true);
-                pauseImage.SetActive(false);
                 unPauseEvent.Invoke();
                 inPause = false;
-                pauseText.text = "";
-
+                pauseBackground.SetActive(false);
+                pauseText.SetActive(false);
             }
             else
             {
-                firstPersonCamera.SetActive(false);
-                pauseImage.SetActive(true);
                 pauseEvent.Invoke();
                 inPause = true;
-                pauseText.text = "Appuyez sur le bouton \"P\" pour continuer la partie";
+                pauseBackground.SetActive(true);
+                pauseText.SetActive(true);
 
             }
         }

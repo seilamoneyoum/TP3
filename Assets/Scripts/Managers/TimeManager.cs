@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
             int minutes = (int)(Mathf.Floor(remainingTime / SECONDS_IN_ONE_MIN));
             int seconds = (int)(remainingTime % SECONDS_IN_ONE_MIN);
             string secondsFormat = " : ";
-            if (seconds < 0)
+            if (seconds < 10)
             {
                 secondsFormat = " : 0";
             }

@@ -1,18 +1,105 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Linq;
 
-public class UnlockByPadlockCode : MonoBehaviour
+public class UnlockByPadlockCode : Unlock
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private string unsuccessfulMessage;
+    [SerializeField] private string gainedObjectAfterUnlock;  
+    private TextMeshProUGUI firstNumberText;
+    private TextMeshProUGUI secondNumberText;
+    private TextMeshProUGUI thirdNumberText;
+    private TextMeshProUGUI fourthNumberText;
+    private int currentIndex;
+    GameObject padlockScreen;
+    GameObject firstPersonCamera;
+
+    // Référence de boutons: https://learn.unity.com/tutorial/creating-ui-buttons#5f7d06d3edbc2a0023e9e713
+    private void Awake()
     {
-        
+        currentIndex = 0;
+        firstPersonCamera = GameObject.Find("First Person Camera");
+        padlockScreen = GameObject.Find("PadlockScreen");
+        GameObject firstNumber = GameObject.Find("IndexButton (0)");
+        GameObject secondNumber = GameObject.Find("IndexButton (1)");
+        GameObject thirdNumber = GameObject.Find("IndexButton (2)");
+        GameObject fourthNumber = GameObject.Find("IndexButton (3)");
+        firstNumberText = firstNumber.GetComponentInChildren<TextMeshProUGUI>();
+        secondNumberText = secondNumber.GetComponentInChildren<TextMeshProUGUI>();
+        thirdNumberText = thirdNumber.GetComponentInChildren<TextMeshProUGUI>();
+        fourthNumberText = fourthNumber.GetComponentInChildren<TextMeshProUGUI>();
+        padlockScreen.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+   
+    public override void TryToUnlock()
     {
-        
+        if (IsLocked())
+        {
+            firstPersonCamera.SetActive(false);
+            clicker.SetClickOnObject(false);
+            padlockScreen.SetActive(true);
+        }
+    }
+
+    public void SetCurrentIndex(int index)
+    {
+        Debug.Log("Index: " + index);
+        currentIndex = index;
+    }
+
+    public void SetCode(int number)
+    {
+        Debug.Log("Number: " + number + " To index:" + currentIndex);
+        switch (currentIndex)
+        {
+            case 0:
+                firstNumberText.text = number.ToString();
+                break;
+            case 1:
+                secondNumberText.text = number.ToString();
+                break;
+            case 2:
+                thirdNumberText.text = number.ToString();
+                break;
+            case 3:
+                fourthNumberText.text = number.ToString();
+                break;
+        }
+    }
+
+    public void Validate()
+    {
+
+        Debug.Log("Validate");
+        string codeAsString = firstNumberText.text + secondNumberText.text + thirdNumberText.text + fourthNumberText.text;
+        if (codeAsString == requirementToUnlock)
+        {
+           
+            LeavePadlockScreen();
+            // Pour faire "sortir" l'objet hors de là
+            GameObject gainedObject = GameObject.Find(gainedObjectAfterUnlock);
+            Vector3 newPosition = gainedObject.transform.position;
+            newPosition.y *= 3;
+            gainedObject.transform.position = newPosition;
+        }
+        else
+        {
+            text.text = unsuccessfulMessage;
+        }
+    }
+
+    public void LeavePadlockScreen()
+    {
+        Debug.Log("Cancel");
+        firstPersonCamera.SetActive(true);
+        clicker.SetClickOnObject(true);
+        padlockScreen.SetActive(false);
+
     }
 }

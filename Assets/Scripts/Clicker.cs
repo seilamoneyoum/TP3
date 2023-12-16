@@ -1,6 +1,8 @@
 using System.ComponentModel.Design;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 public class Clicker : MonoBehaviour
 {
     private const float MAX_DISTANCE = 1.3f;
@@ -8,12 +10,17 @@ public class Clicker : MonoBehaviour
     private Finder finder;
     private ToolsManager toolsManager;
     private CluesManager cluesManager;
-    
+    private bool canClickOnObject;
+    private void OnEnable()
+    {
+        GameObject finderObject = GameObject.Find("Finder");
+        finder = finderObject.GetComponent<Finder>();
+        canClickOnObject = true;
+    }
+
     void Start()
     {
         m_Camera = Camera.main;
-        GameObject finderObject = GameObject.Find("Finder");
-        finder = finderObject.GetComponent<Finder>();
         toolsManager = finder.GetToolsManager();
         cluesManager = finder.GetCluesManager();
     }
@@ -21,7 +28,7 @@ public class Clicker : MonoBehaviour
     void Update()
     {
         Mouse mouse = Mouse.current;
-        if (mouse.leftButton.wasPressedThisFrame)
+        if (mouse.leftButton.wasPressedThisFrame && canClickOnObject)
         {
             Vector3 mousePosition = mouse.position.ReadValue();
             Ray ray = m_Camera.ScreenPointToRay(mousePosition);
@@ -33,24 +40,41 @@ public class Clicker : MonoBehaviour
                 {
                     GameObject chosenObject = hit.collider.gameObject;
                     ClickOnClue(chosenObject);
-                    ClickOnCarpet(chosenObject);
                     ClickOnDoor(chosenObject);
                     ClickOnTool(chosenObject);
-                    ClickOnLightSwitch(chosenObject);
-                    ClickOnCrates(chosenObject);
+                    ClickOnObstacle(chosenObject);
                 }
 
             }
         }
     }
 
-    private void ClickOnCrates(GameObject chosenObject)
+    public void SetClickOnObject(bool canClick)
     {
-        if (chosenObject.name == "Crates")
+        this.canClickOnObject = canClick;
+    }
+
+    private void ClickOnObstacle(GameObject chosenObject)
+    {
+        if (chosenObject.CompareTag("Obstacle"))
         {
-            Unlock unlock = chosenObject.GetComponent<UnlockByTool>();
+            Unlock unlock = null;
+            Information information = chosenObject.GetComponent<Information>();
+            if (chosenObject.GetComponent<UnlockByTool>() != null)
+            {
+                unlock = chosenObject.GetComponent<UnlockByTool>();
+            }
+            else if (chosenObject.GetComponent<UnlockByPadlockCode>() != null)
+            {
+                unlock = chosenObject.GetComponent<UnlockByPadlockCode>();
+            }
+            
+            unlock.TryToUnlock();
+            information.ShowInformation();
+
         }
     }
+
     private void ClickOnDoor(GameObject chosenObject)
     {
         if (chosenObject.CompareTag("LeftDoor") || chosenObject.CompareTag("RightDoor"))
@@ -71,8 +95,6 @@ public class Clicker : MonoBehaviour
             collectEffect.AfterCollect();
             information.ShowInformation();
             toolsManager.AddTool(chosenObject);
-
-
         }
     }
 
@@ -85,28 +107,7 @@ public class Clicker : MonoBehaviour
             collectEffect.AfterCollect();
             information.ShowInformation();
             cluesManager.AddClue(chosenObject);
-
-
         }
     }
 
-    private void ClickOnCarpet(GameObject chosenObject)
-    {
-        if (chosenObject.CompareTag("Carpet"))
-        {
-
-
-        }
-    }
-    private void ClickOnLightSwitch(GameObject chosenObject)
-    {
-        if (chosenObject.CompareTag("Lightswitch"))
-        {
-            ChangeLight light = chosenObject.GetComponent<ChangeLight>();
-            light.ChangeLightState();
-
-
-        }
-
-    }
 }

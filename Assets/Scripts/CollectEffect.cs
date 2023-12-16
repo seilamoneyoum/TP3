@@ -17,7 +17,7 @@ public class CollectEffect : MonoBehaviour
 
     }
 
-    IEnumerator SoundPlay()
+    private IEnumerator SoundPlay()
     {
         audioSource.Play();
         yield return new WaitForSeconds(audioSource.clip.length);

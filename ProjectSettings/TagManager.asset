@@ -5,13 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Clue
-  - Carpet
   - Door
-  - Drawer
   - LeftDoor
   - RightDoor
   - Lightswitch
   - Tool
+  - Obstacle
+  - CodeValue
   layers:
   - Default
   - TransparentFX

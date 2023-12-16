@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8866265435265109766}
   - component: {fileID: 5972437072014786899}
   m_Layer: 0
-  m_Name: SafeKey
+  m_Name: WardrobeKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public const int INDEX_FOR_TITLE = 0;
     public const int INDEX_FOR_MAIN = 1;
     public const int INDEX_FOR_END = 2;
-    private static TimeManager timeManager;
     private static GameManager instance = null;
     public static GameManager Instance { get { return instance; } }
     private int actualScene = 0;
