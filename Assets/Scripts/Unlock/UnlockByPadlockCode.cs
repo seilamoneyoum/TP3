@@ -16,6 +16,7 @@ public class UnlockByPadlockCode : Unlock
     private TextMeshProUGUI thirdNumberText;
     private TextMeshProUGUI fourthNumberText;
     private int currentIndex;
+    private bool currentlyInProcess;
     GameObject padlockScreen;
     GameObject firstPersonCamera;
 
@@ -41,21 +42,18 @@ public class UnlockByPadlockCode : Unlock
     {
         if (IsLocked())
         {
-            firstPersonCamera.SetActive(false);
-            clicker.SetClickOnObject(false);
-            padlockScreen.SetActive(true);
+            currentlyInProcess = true;
+            EnterPadlockScreen();
         }
     }
 
     public void SetCurrentIndex(int index)
     {
-        Debug.Log("Index: " + index);
         currentIndex = index;
     }
 
     public void SetCode(int number)
     {
-        Debug.Log("Number: " + number + " To index:" + currentIndex);
         switch (currentIndex)
         {
             case 0:
@@ -75,13 +73,12 @@ public class UnlockByPadlockCode : Unlock
 
     public void Validate()
     {
-
-        Debug.Log("Validate");
         string codeAsString = firstNumberText.text + secondNumberText.text + thirdNumberText.text + fourthNumberText.text;
         if (codeAsString == requirementToUnlock)
         {
            
             LeavePadlockScreen();
+            currentlyInProcess = false;
             // Pour faire "sortir" l'objet hors de là
             GameObject gainedObject = GameObject.Find(gainedObjectAfterUnlock);
             Vector3 newPosition = gainedObject.transform.position;
@@ -90,16 +87,35 @@ public class UnlockByPadlockCode : Unlock
         }
         else
         {
-            text.text = unsuccessfulMessage;
+            text.text = unsuccessfulMessage + "("+ codeAsString+")"; 
+        }
+    }
+
+    public void Cancel()
+    {
+        LeavePadlockScreen();
+        currentlyInProcess = false;
+    }
+
+    public void EnterPadlockScreen()
+    {
+        // Sert à la gestion de pause. Si le jeu est mis en pause pendant qu'on n'essaye pas de débloquer,
+        // on ne veut pas que cette affichage apparaît après la pause
+        if (currentlyInProcess) 
+        {
+            firstPersonCamera.SetActive(false);
+            clicker.SetClickOnObject(false);
+            padlockScreen.SetActive(true);
         }
     }
 
     public void LeavePadlockScreen()
     {
-        Debug.Log("Cancel");
-        firstPersonCamera.SetActive(true);
-        clicker.SetClickOnObject(true);
-        padlockScreen.SetActive(false);
-
+        if (currentlyInProcess)
+        {
+            firstPersonCamera.SetActive(true);
+            clicker.SetClickOnObject(true);
+            padlockScreen.SetActive(false);
+        }
     }
 }
