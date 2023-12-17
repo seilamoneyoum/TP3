@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ToolsManager : MonoBehaviour
 {
-    private const int NB_TOTAL_TOOLS = 4;
+    private const int NB_TOTAL_TOOLS = 3;
     private List<GameObject> tools = new List<GameObject>();
     Text nbToolsText;
 

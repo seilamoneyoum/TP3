@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CluesManager : MonoBehaviour
 {
-    private const int NB_TOTAL_CLUES = 8;
+    private const int NB_TOTAL_CLUES = 3;
     private List<GameObject> clues = new List<GameObject>();
     Text nbCluesText;
 

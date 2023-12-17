@@ -75,16 +75,24 @@ public class UnlockByPadlockCode : Unlock
         if (codeAsString == requirementToUnlock)
         {
             padlockScreen.Cancel();
+            SuccessfulUnlock();
+            StartCoroutine(WaitForSoundToPlay());
             // Pour faire "sortir" l'objet hors de là
             GameObject gainedObject = GameObject.Find(gainedObjectAfterUnlock);
-            AppearOutOfObject appearOutOfObjectComponent = gainedObject.GetComponent<AppearOutOfObject>();
-            appearOutOfObjectComponent.Show();
+            MoveObject moveObjectComponent = gainedObject.GetComponent<MoveObject>();
+            moveObjectComponent.Move();
         }
         else
         {
             text.text = unsuccessfulMessage + "("+ codeAsString+")"; 
         }
     }
+
+    private IEnumerator WaitForSoundToPlay()
+    {
+        yield return new WaitForSeconds(audioSource.clip.length);
+    }
+
 
 
 

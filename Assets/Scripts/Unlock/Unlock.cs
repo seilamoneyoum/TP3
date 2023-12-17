@@ -13,7 +13,6 @@ public abstract class Unlock : MonoBehaviour
     private Finder finder;
     protected ToolsManager toolsManager;
     protected ProgressManager progressManager;
-    protected Clicker clicker;
     protected Text text;
     protected Information information;
     protected AudioSource audioSource;
@@ -28,10 +27,17 @@ public abstract class Unlock : MonoBehaviour
     {
         toolsManager = finder.GetToolsManager();
         progressManager = finder.GetProgressManager();
-        clicker = finder.GetClicker();
         text = finder.GetMessageText();
         information = gameObject.GetComponent<Information>();
         audioSource = GetComponent<AudioSource>();
+    }
+    protected void SuccessfulUnlock()
+    {
+        information.SetNewInformation(successfulUnlockMessage);
+        SetLockedStatus(false);
+        audioSource.clip = audioClip;
+        audioSource.Play();
+        progressManager.AddUnlockProgress();
     }
     public bool IsLocked()
     {

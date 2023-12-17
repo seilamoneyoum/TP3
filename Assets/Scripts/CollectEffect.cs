@@ -20,7 +20,7 @@ public class CollectEffect : MonoBehaviour
     {
         audioSource.Play();
         yield return new WaitForSeconds(audioSource.clip.length);
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
 
     }
 }

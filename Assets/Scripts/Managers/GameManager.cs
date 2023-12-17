@@ -19,9 +19,6 @@ public class GameManager : MonoBehaviour
     private int actualScene = 0;
     bool scenesAreInTransition = false;
 
-    private bool hasWon = false;
-
-    Text gameStatusText;
     void Awake()
     {
         if (instance == null)
@@ -48,9 +45,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-
-
 
     public void LoadScene(float delay, int scene)
     {

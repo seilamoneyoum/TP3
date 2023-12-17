@@ -8,11 +8,7 @@ public class UnlockByTool : Unlock
     {
         if (toolsManager.IsToolAvailable(requirementToUnlock))
         {
-            information.SetNewInformation(successfulUnlockMessage);
-            SetLockedStatus(false);
-            audioSource.clip = audioClip;
-            audioSource.Play();
-            progressManager.AddUnlockProgress();
+            SuccessfulUnlock();
         }
         else
         {

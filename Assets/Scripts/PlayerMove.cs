@@ -6,11 +6,13 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private Transform mainCamera;
-    [SerializeField] private float moveSpeed = 1.3f;
+    [SerializeField] private float moveSpeed;
     [SerializeField] private bool isStanding = true;
     [SerializeField] private bool canMove = true;
     private const float SIZE_Y_CROUCHING = 0.3f;
     private const float SIZE_Y_STANDING = 0.9f;
+    private const float SPEED_STANDING = 1.1f;
+    private const float SPEED_CROUCHING = 0.4f;
     private CharacterController characterController;
     private Vector3 direction;
     private float rotationTime = 0.1f;
@@ -82,14 +84,14 @@ public class PlayerMove : MonoBehaviour
                 // Cette méthode diminue la grandeur du personnage, mais cela permet de donner l'illusion que le personnage est accroupi.
                 transform.localScale = new Vector3(transform.localScale.x, SIZE_Y_CROUCHING, transform.localScale.z);
                 isStanding = false;
-                moveSpeed = 0.5f;
+                moveSpeed = SPEED_CROUCHING;
             }
             else
             {
                 // Cette méthode augmente la grandeur diminuée du personnage, mais cela permet de donner l'illusion que le personnage est debout.
                 transform.localScale = new Vector3(transform.localScale.x, SIZE_Y_STANDING, transform.localScale.z);
                 isStanding = true;
-                moveSpeed = 1.3f;
+                moveSpeed = SPEED_STANDING;
 
             }
         }

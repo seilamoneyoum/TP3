@@ -10,10 +10,11 @@ using UnityEngine.Events;
 
 public class TimeManager : MonoBehaviour
 {
+    [SerializeField] private UnityEvent GameOver;
     private const int SECONDS_IN_ONE_MIN = 60;
     private bool timeResume = true;
-    Text timeText;
-    private float remainingTime = 300;
+    private Text timeText;
+    private float remainingTime = 480;
 
     void Update()
     {
@@ -32,10 +33,8 @@ public class TimeManager : MonoBehaviour
             remainingTime -= Time.deltaTime;
             if (remainingTime <= 0)
             {
-                GameObject gameManagerObject = GameObject.Find("GameManager");
-                GameManager gameManager = gameManagerObject.GetComponent<GameManager>();
                 timeResume = false;
-                gameManager.LoadScene(1, GameManager.INDEX_FOR_END);
+                GameOver.Invoke();
             }
         }
     }

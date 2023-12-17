@@ -39,6 +39,7 @@ public class Clicker : MonoBehaviour
                 if (distanceToHit <= MAX_DISTANCE)
                 {
                     GameObject chosenObject = hit.collider.gameObject;
+                    ClickOnMoveableObject(chosenObject);
                     ClickOnClue(chosenObject);
                     ClickOnDoor(chosenObject);
                     ClickOnTool(chosenObject);
@@ -51,6 +52,15 @@ public class Clicker : MonoBehaviour
     public void SetClickOnObject(bool canClick)
     {
         this.canClickOnObject = canClick;
+    }
+
+    private void ClickOnMoveableObject(GameObject chosenObject)
+    {
+        if (chosenObject.CompareTag("MoveableObject"))
+        {
+            MoveObject moveObject = chosenObject.GetComponent<MoveObject>();
+            moveObject.Move();
+        }
     }
 
     private void ClickOnObstacle(GameObject chosenObject)

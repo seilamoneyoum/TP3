@@ -8,10 +8,10 @@ TagManager:
   - Door
   - LeftDoor
   - RightDoor
-  - Lightswitch
   - Tool
   - Obstacle
   - CodeValue
+  - MoveableObject
   layers:
   - Default
   - TransparentFX
