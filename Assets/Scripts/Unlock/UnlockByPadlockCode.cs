@@ -79,8 +79,8 @@ public class UnlockByPadlockCode : Unlock
             StartCoroutine(WaitForSoundToPlay());
             // Pour faire "sortir" l'objet hors de là
             GameObject gainedObject = GameObject.Find(gainedObjectAfterUnlock);
-            MoveObject moveObjectComponent = gainedObject.GetComponent<MoveObject>();
-            moveObjectComponent.Move();
+            Move moveObjectComponent = gainedObject.GetComponent<Move>();
+            moveObjectComponent.SetPosition();
         }
         else
         {

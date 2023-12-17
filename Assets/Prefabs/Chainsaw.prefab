@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 1979146879144716957}
   - component: {fileID: 6499271232158048237}
   - component: {fileID: 9100664780354719386}
-  - component: {fileID: 1161248180404504422}
+  - component: {fileID: 1551700180750021935}
+  - component: {fileID: 2776735393006074829}
   m_Layer: 0
   m_Name: Chainsaw
   m_TagString: Tool
@@ -232,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentInformation: "Une tron\xE7onneuse! Je peux me d\xE9fendre avec. Juste esp\xE9rant
     que je ne me blesses pas avec cette tron\xE7onneuse."
---- !u!114 &1161248180404504422
+--- !u!114 &1551700180750021935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,9 +242,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4719076941979770649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb346eec355b13344b65d5a83abd2c7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 826781bd3d49f5e4c8f4d83fc69098cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2776735393006074829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4719076941979770649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804be29fb705fc64cb36b941f7141ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AddXToMove: 0
-  AddYToMove: 0
+  AddYToMove: 0.4
   AddZToMove: 0

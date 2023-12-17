@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject : MonoBehaviour
+public class Move : MonoBehaviour
 {
     [SerializeField] private float AddXToMove;
     [SerializeField] private float AddYToMove;
@@ -12,11 +12,11 @@ public class MoveObject : MonoBehaviour
 
     void Start()
     {
-        isInInitialPlace = true; 
+        isInInitialPlace = true;
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void Move()
+    public void SetPosition()
     {
         if (!audioSource.isPlaying)
         {
@@ -33,6 +33,5 @@ public class MoveObject : MonoBehaviour
                 transform.position = new Vector3(transform.position.x - AddXToMove, transform.position.y - AddYToMove, transform.position.z - AddZToMove);
             }
         }
-            
     }
 }

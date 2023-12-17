@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1686478993128672479}
   - component: {fileID: 2293919890276107196}
   - component: {fileID: 2789179776748701912}
+  - component: {fileID: 6216348300966090209}
   m_Layer: 0
   m_Name: Suitcase
   m_TagString: Clue
@@ -231,3 +232,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 40991405246042631, guid: f023a5dda8b2af84c979aa2da6d1cab3, type: 3}
+--- !u!114 &6216348300966090209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131727776354525087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed0478c4f5c71d4ab4927a4bc15a0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
