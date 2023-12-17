@@ -11,8 +11,6 @@ public class Finder : MonoBehaviour
     private TimeManager timeManager;
     private ToolsManager toolsManager;
     private CluesManager cluesManager;
-    private ProgressManager progressManager;
-    private Clicker clicker;
 
     void Awake()
     {
@@ -34,16 +32,6 @@ public class Finder : MonoBehaviour
         GameObject cluesManagerObject = GameObject.Find("CluesManager");
         cluesManager = cluesManagerObject.GetComponent<CluesManager>();
 
-        GameObject progressManagerObject = GameObject.Find("ProgressManager");
-        progressManager = progressManagerObject.GetComponent<ProgressManager>();
-
-        GameObject clickerObject = GameObject.Find("Clicker");
-        clicker = clickerObject.GetComponent<Clicker>();
-    }
-
-    public Clicker GetClicker()
-    {
-        return clicker;
     }
 
     public Text GetMessageText()
@@ -74,11 +62,6 @@ public class Finder : MonoBehaviour
     public CluesManager GetCluesManager()
     {
         return cluesManager;
-    }
-
-    public ProgressManager GetProgressManager()
-    {
-        return progressManager;
     }
 
 }

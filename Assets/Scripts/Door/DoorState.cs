@@ -10,7 +10,6 @@ public abstract class DoorState : MonoBehaviour
     protected AudioSource audioSource;
     protected DoorManager doorManager;
     protected SoundManager soundManager;
-    protected ProgressManager progressManager;
     protected float rotationYOpen;
     private Finder finder;
 
@@ -39,7 +38,6 @@ public abstract class DoorState : MonoBehaviour
         finder = finderObject.GetComponent<Finder>();
         audioSource = gameObject.GetComponent<AudioSource>();
         soundManager = finder.GetSoundManager();
-        progressManager = finder.GetProgressManager();
         doorManager = GetComponent<DoorManager>();
     }
 
