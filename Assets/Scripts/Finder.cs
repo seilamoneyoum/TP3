@@ -11,6 +11,7 @@ public class Finder : MonoBehaviour
     private TimeManager timeManager;
     private ToolsManager toolsManager;
     private CluesManager cluesManager;
+    private AudioSource mainCameraAudioSource;
 
     void Awake()
     {
@@ -32,6 +33,14 @@ public class Finder : MonoBehaviour
         GameObject cluesManagerObject = GameObject.Find("CluesManager");
         cluesManager = cluesManagerObject.GetComponent<CluesManager>();
 
+        GameObject mainCameraObject = GameObject.Find("Main Camera");
+        mainCameraAudioSource = mainCameraObject.GetComponent<AudioSource>();
+
+    }
+
+    public AudioSource GetMainCameraAudioSource()
+    {
+        return mainCameraAudioSource;
     }
 
     public Text GetMessageText()

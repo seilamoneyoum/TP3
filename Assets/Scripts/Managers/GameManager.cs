@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     public const int INDEX_FOR_TITLE = 0;
     public const int INDEX_FOR_MAIN = 1;
-    public const int INDEX_FOR_END = 2;
+    public const int INDEX_FOR_END_VICTORY = 2;
+    public const int INDEX_FOR_END_LOSS = 3;
     private static GameManager instance = null;
     public static GameManager Instance { get { return instance; } }
     private int actualScene = 0;
@@ -40,10 +41,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetButtonDown("Cancel")) Application.Quit();
         if (Input.GetButtonDown("Submit"))
         {
-            if (actualScene == INDEX_FOR_TITLE) LoadScene(0, INDEX_FOR_MAIN);
-            if (actualScene == INDEX_FOR_END) LoadScene(0, INDEX_FOR_TITLE);
+            if (actualScene == INDEX_FOR_TITLE) LoadScene(1, INDEX_FOR_MAIN);
+            if (actualScene == INDEX_FOR_END_VICTORY || actualScene == INDEX_FOR_END_LOSS) LoadScene(1, INDEX_FOR_TITLE);
         }
-
     }
 
     public void LoadScene(float delay, int scene)
@@ -54,8 +54,6 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(RestartLevelDelay(delay, scene));
     }
-
-    
 
     private IEnumerator RestartLevelDelay(float delay, int scene)
     {
@@ -71,8 +69,12 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Main");
                 break;
             case 2:
-                actualScene = INDEX_FOR_END;
-                SceneManager.LoadScene("End");
+                actualScene = INDEX_FOR_END_VICTORY;
+                SceneManager.LoadScene("Victory");
+                break;
+            case 3:
+                actualScene = INDEX_FOR_END_LOSS;
+                SceneManager.LoadScene("GameOver");
                 break;
         }
 

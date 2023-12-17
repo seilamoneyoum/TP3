@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip closeDoor;
     [SerializeField] private AudioClip chainsaw;
     [SerializeField] private AudioClip removeWedge;
+    [SerializeField] private AudioClip gameOver;
     public AudioClip CollectKeyClip { get { return collectKey; } }
     public AudioClip CollectClueClip { get { return collectClue; } }
     public AudioClip OpenDoorClip { get { return openDoor; } }
@@ -20,6 +21,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip ChainsawClip { get { return chainsaw; } }
     public AudioClip RemoveWedgeClip { get { return removeWedge; } }
+    public AudioClip GameOverClip { get { return gameOver;  } }
     void Awake()
     {
 

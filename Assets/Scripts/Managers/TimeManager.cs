@@ -10,11 +10,23 @@ using UnityEngine.Events;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] private UnityEvent GameOver;
     private const int SECONDS_IN_ONE_MIN = 60;
-    private bool timeResume = true;
+    [SerializeField] private float remainingTime = 10;
+    private GameManager gameManager;
+    private AudioSource mainCameraAudioSource;
+    private SoundManager soundManager;
+    private bool timeResume;
     private Text timeText;
-    private float remainingTime = 480;
+
+    private void OnEnable()
+    {
+        timeResume = true;
+        GameObject finderObject = GameObject.Find("Finder");
+        Finder finder = finderObject.GetComponent<Finder>();
+        gameManager = finder.GetGameManager();
+        mainCameraAudioSource = finder.GetMainCameraAudioSource();
+        soundManager = finder.GetSoundManager();
+    }
 
     void Update()
     {
@@ -34,9 +46,16 @@ public class TimeManager : MonoBehaviour
             if (remainingTime <= 0)
             {
                 timeResume = false;
-                GameOver.Invoke();
+                GameOverHandler();
             }
         }
+    }
+
+    private void GameOverHandler()
+    {
+        mainCameraAudioSource.clip = soundManager.GameOverClip;
+        mainCameraAudioSource.Play();
+        gameManager.LoadScene(soundManager.GameOverClip.length, 3);
     }
 
     public bool TimeIsResumed()

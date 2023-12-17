@@ -5,6 +5,20 @@ using UnityEngine.UI;
 
 public class CluesManager : MonoBehaviour
 {
+    private static CluesManager instance = null;
+    public static CluesManager Instance { get { return instance; } }
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     private const int NB_TOTAL_CLUES = 3;
     private List<GameObject> clues = new List<GameObject>();
     Text nbCluesText;

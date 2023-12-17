@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1014565798426688217}
   - component: {fileID: -6483018587112503322}
   - component: {fileID: -4965409455648519102}
+  - component: {fileID: 2252315696528695611}
   m_Layer: 0
   m_Name: Crates
   m_TagString: Obstacle
@@ -185,6 +186,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2252315696528695611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7126788238235982473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98b2ff6a53f8cb47b2032bf289f5c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Victory:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &304998532906117450
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class Tool : ClickableObject
@@ -17,12 +16,8 @@ public class Tool : ClickableObject
     }
     public override void OnClick()
     {
-        Debug.Log("test");
         collectEffect.AfterCollect();
         information.ShowInformation();
         toolsManager.AddTool(gameObject);
     }
-
-
-
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Information : MonoBehaviour
 {
     [SerializeField] private string currentInformation = "";
+
     protected Text text;
 
     void Start()

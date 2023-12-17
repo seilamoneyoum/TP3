@@ -8,6 +8,8 @@ public class Obstacle : ClickableObject
     [SerializeField] private UnityEvent Victory;
     private Unlock unlock;
     private Information information;
+    private GameManager gameManager;
+    private TimeManager timeManager;
     public override void OnClick()
     {
         unlock.TryToUnlock();
@@ -17,6 +19,8 @@ public class Obstacle : ClickableObject
 
     void Start()
     {
+        gameManager = finder.GetGameManager();
+        timeManager = finder.GetTimeManager();
         information = GetComponent<Information>();
         if (GetComponent<UnlockByTool>() != null)
         {
@@ -32,7 +36,9 @@ public class Obstacle : ClickableObject
     {
         if (!isLocked && chosenObjectName == "Crates")
         {
-            Victory.Invoke();
+            timeManager.SetTimeResume(false);
+            gameManager.LoadScene(10, 2);
         }
     }
+
 }

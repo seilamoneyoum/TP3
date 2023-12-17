@@ -92,8 +92,4 @@ public class UnlockByPadlockCode : Unlock
     {
         yield return new WaitForSeconds(audioSource.clip.length);
     }
-
-
-
-
 }
