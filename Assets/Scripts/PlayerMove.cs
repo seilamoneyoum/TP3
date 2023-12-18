@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private bool canMove = true;
     private const float SIZE_Y_CROUCHING = 0.3f;
     private const float SIZE_Y_STANDING = 0.9f;
-    private const float SPEED_STANDING = 1.1f;
+    private const float SPEED_STANDING = 1f;
     private const float SPEED_CROUCHING = 0.4f;
     private CharacterController characterController;
     private Vector3 direction;

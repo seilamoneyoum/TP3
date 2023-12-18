@@ -11,7 +11,7 @@ using UnityEngine.Events;
 public class TimeManager : MonoBehaviour
 {
     private const int SECONDS_IN_ONE_MIN = 60;
-    [SerializeField] private float remainingTime = 10;
+    [SerializeField] private float remainingTime = 480;
     private GameManager gameManager;
     private AudioSource mainCameraAudioSource;
     private SoundManager soundManager;

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
     public static GameManager Instance { get { return instance; } }
     private int actualScene = 0;
-    bool scenesAreInTransition = false;
+    private bool scenesAreInTransition = false;
 
     void Awake()
     {

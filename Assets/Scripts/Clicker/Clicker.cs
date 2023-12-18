@@ -9,6 +9,8 @@ public class Clicker : MonoBehaviour
     private const float MAX_DISTANCE = 1.2f;
     private Camera m_Camera;
 
+    // Référence: https://learn.unity.com/tutorial/onmousedown#63566bf3edbc2a0285856b5a
+
     private void OnEnable()
     {
         m_Camera = Camera.main;

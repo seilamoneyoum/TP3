@@ -12184,6 +12184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e546f988c3d8aa47a62a591170a376b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remainingTime: 480
 --- !u!4 &1609531226
 Transform:
   m_ObjectHideFlags: 0
@@ -16771,6 +16772,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1526360537}
     m_Modifications:
+    - target: {fileID: 421474797221206968, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
+      propertyPath: m_Size.z
+      value: 1.0911431
+      objectReference: {fileID: 0}
+    - target: {fileID: 421474797221206968, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
+      propertyPath: m_Center.z
+      value: -0.04557158
+      objectReference: {fileID: 0}
     - target: {fileID: 2252315696528695611, guid: f030658d7c1e1d84b8197e4a4fcfe523, type: 3}
       propertyPath: Victory.m_PersistentCalls.m_Calls.Array.size
       value: 1

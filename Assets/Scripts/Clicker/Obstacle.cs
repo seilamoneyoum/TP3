@@ -5,11 +5,12 @@ using UnityEngine.Events;
 
 public class Obstacle : ClickableObject
 {
-    [SerializeField] private UnityEvent Victory;
     private Unlock unlock;
     private Information information;
     private GameManager gameManager;
     private TimeManager timeManager;
+    private PlayerMove playerMove;
+
     public override void OnClick()
     {
         unlock.TryToUnlock();
@@ -19,6 +20,8 @@ public class Obstacle : ClickableObject
 
     void Start()
     {
+        GameObject player = GameObject.Find("Player");
+        playerMove = player.GetComponent<PlayerMove>();
         gameManager = finder.GetGameManager();
         timeManager = finder.GetTimeManager();
         information = GetComponent<Information>();
@@ -36,6 +39,7 @@ public class Obstacle : ClickableObject
     {
         if (!isLocked && chosenObjectName == "Crates")
         {
+            playerMove.SetMovementStatus(false);
             timeManager.SetTimeResume(false);
             gameManager.LoadScene(10, 2);
         }

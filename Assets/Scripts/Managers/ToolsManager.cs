@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class ToolsManager : MonoBehaviour
 {
     private const int NB_TOTAL_TOOLS = 3;
-    private List<GameObject> tools = new List<GameObject>();
+    private List<string> tools = new List<string>();
     private Text nbToolsText;
 
     public void AddTool(GameObject gameObject)
     {
-        if (!tools.Contains(gameObject))
+        if (!tools.Contains(gameObject.name))
         {
-            tools.Add(gameObject);
+            tools.Add(gameObject.name);
             nbToolsText = GameObject.Find("NbToolsText").GetComponent<Text>();
             nbToolsText.text = tools.Count.ToString() + "/" + NB_TOTAL_TOOLS;
         }
@@ -21,9 +21,9 @@ public class ToolsManager : MonoBehaviour
 
     public bool IsToolAvailable(string name)
     {
-        foreach (GameObject tool in tools)
+        foreach (string tool in tools)
         {
-            if (tool.name.Equals(name)) return true;
+            if (tool.Equals(name)) return true;
         }
         return false;
     }

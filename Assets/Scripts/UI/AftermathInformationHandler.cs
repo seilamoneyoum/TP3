@@ -10,15 +10,13 @@ public class AftermathInformationHandler : MonoBehaviour
     [SerializeField] private string information;
     private CluesManager cluesManager;
     private TextMeshProUGUI text;
-    private void OnEnable()
-    {
-        text = GetComponent<TextMeshProUGUI>();
-        GameObject cluesManagerObject = GameObject.Find("CluesManager");
-        cluesManager = cluesManagerObject.GetComponent<CluesManager>();
-    }
 
     private void Start()
     {
+
+        text = GetComponent<TextMeshProUGUI>();
+        GameObject cluesManagerObject = GameObject.Find("CluesManager");
+        cluesManager = cluesManagerObject.GetComponent<CluesManager>();
         if (cluesManager.IsClueAvailable(clueCollected))
         {
             text.text = information;
