@@ -10,9 +10,9 @@ public class CollectEffect : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void AfterCollect()
+    public void Collect()
     {
-        StartCoroutine(SoundPlay());
+        if (!audioSource.isPlaying) StartCoroutine(SoundPlay());
 
     }
 

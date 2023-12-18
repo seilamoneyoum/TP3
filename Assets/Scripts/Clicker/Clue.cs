@@ -9,7 +9,7 @@ public class Clue : ClickableObject
     private CollectEffect collectEffect;
     public override void OnClick()
     {
-        collectEffect.AfterCollect();
+        collectEffect.Collect();
         information.ShowInformation();
         cluesManager.AddClue(gameObject);
     }

@@ -35,6 +35,7 @@ public class CluesManager : MonoBehaviour
         if (!clues.Contains(gameObject.name))
         {
             clues.Add(gameObject.name);
+            nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
             nbCluesText.text = clues.Count.ToString() + "/" + NB_TOTAL_CLUES;
         }
     }

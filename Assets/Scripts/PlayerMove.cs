@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     private const float SIZE_Y_CROUCHING = 0.3f;
     private const float SIZE_Y_STANDING = 0.9f;
     private const float SPEED_STANDING = 0.8f;
-    private const float SPEED_CROUCHING = 0.2f;
+    private const float SPEED_CROUCHING = 0.3f;
     private CharacterController characterController;
     private Vector3 direction;
     private float rotationTime = 0.1f;
@@ -39,9 +39,7 @@ public class PlayerMove : MonoBehaviour
 
     public void SetMovementStatus(bool willMove)
     {
-
         canMove = willMove;
-        Debug.Log(canMove);
     }
     private void BuildSurfaceMovement()
     {

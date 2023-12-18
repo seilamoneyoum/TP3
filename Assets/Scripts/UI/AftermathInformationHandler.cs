@@ -13,7 +13,6 @@ public class AftermathInformationHandler : MonoBehaviour
 
     private void Start()
     {
-
         text = GetComponent<TextMeshProUGUI>();
         GameObject cluesManagerObject = GameObject.Find("CluesManager");
         cluesManager = cluesManagerObject.GetComponent<CluesManager>();
@@ -26,4 +25,5 @@ public class AftermathInformationHandler : MonoBehaviour
             text.text = CLUE_NOT_FOUND_MESSAGE;
         }
     }
+
 }

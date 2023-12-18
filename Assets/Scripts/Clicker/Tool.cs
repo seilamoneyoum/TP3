@@ -16,7 +16,7 @@ public class Tool : ClickableObject
     }
     public override void OnClick()
     {
-        collectEffect.AfterCollect();
+        collectEffect.Collect();
         information.ShowInformation();
         toolsManager.AddTool(gameObject);
     }

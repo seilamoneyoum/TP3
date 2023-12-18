@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class Clicker : MonoBehaviour
 {
-    [SerializeField] private UnityEvent Victory;
     [SerializeField] private bool canClickOnObject;
     private const float MAX_DISTANCE = 1.2f;
     private Camera m_Camera;
@@ -45,6 +44,7 @@ public class Clicker : MonoBehaviour
     {
         this.canClickOnObject = canClick;
     }
+
     private void HandleObjectClick(GameObject chosenObject)
     {
         ClickableObject clickableObject = chosenObject.GetComponent<ClickableObject>();
