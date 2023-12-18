@@ -13,16 +13,21 @@ public class CluesManager : MonoBehaviour
     private Text nbCluesText;
     void Awake()
     {
-        Debug.Log("Before :" + clues.Count);
         if (instance == null)
+        {
             instance = this;
-
+            DontDestroyOnLoad(gameObject);
+        }
         else if (instance != this)
+        {
             Destroy(gameObject);
+        }
+    }
 
-        DontDestroyOnLoad(gameObject);
-        Debug.Log("After :" + clues.Count);
-
+    private void Start()
+    {
+        nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
+        nbCluesText.text = clues.Count.ToString() + "/" + NB_TOTAL_CLUES;
     }
 
     public void AddClue(GameObject gameObject)
@@ -30,7 +35,6 @@ public class CluesManager : MonoBehaviour
         if (!clues.Contains(gameObject.name))
         {
             clues.Add(gameObject.name);
-            nbCluesText = GameObject.Find("NbCluesText").GetComponent<Text>();
             nbCluesText.text = clues.Count.ToString() + "/" + NB_TOTAL_CLUES;
         }
     }

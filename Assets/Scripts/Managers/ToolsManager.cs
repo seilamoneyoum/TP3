@@ -9,12 +9,18 @@ public class ToolsManager : MonoBehaviour
     private List<string> tools = new List<string>();
     private Text nbToolsText;
 
+    private void Start()
+    {
+        nbToolsText = GameObject.Find("NbToolsText").GetComponent<Text>();
+        nbToolsText.text = tools.Count.ToString() + "/" + NB_TOTAL_TOOLS;
+    }
+
+
     public void AddTool(GameObject gameObject)
     {
         if (!tools.Contains(gameObject.name))
         {
             tools.Add(gameObject.name);
-            nbToolsText = GameObject.Find("NbToolsText").GetComponent<Text>();
             nbToolsText.text = tools.Count.ToString() + "/" + NB_TOTAL_TOOLS;
         }
     }
