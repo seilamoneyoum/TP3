@@ -1116,8 +1116,9 @@ MonoBehaviour:
   m_text: "Instructions (avec le souris et la clavier):\n- Fl\xE8ches: D\xE9placement
     du personnage principal\n- Bouton droite de la souris: R\xE9cup\xE9rer un object,
     D\xE9placer un objet, Ouvrir la porte, D\xE9bloquer un obstacle, Cliquer sur
-    un bouton\n- Souris: D\xE9placer la cam\xE9ra (de haut au bas)\n- P: Mettre en
-    pause le jeu, Continuer le jeu apr\xE8s la pause\n- ESC: Quitter le jeu"
+    un bouton\n- Souris: D\xE9placer la cam\xE9ra (de haut au bas)\n- Espace: Debout/Accroupi\n-
+    P: Mettre en pause le jeu, Continuer le jeu apr\xE8s la pause\n- ESC: Quitter
+    le jeu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
